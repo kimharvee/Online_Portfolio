@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Online Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #0078d7;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      margin: 5px 0 0;
+    }
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    section h2 {
+      margin-bottom: 10px;
+      color: #0078d7;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background-color: #0078d7;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      margin-top: 20px;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Your Name</h1>
+  <p>Science Teacher | Administrative Professional | IT Enthusiast</p>
+</header>
+
+<main>
+  <!-- Professional Summary -->
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      Experienced science teacher with over a decade of diverse professional experience spanning education, business development, and IT. 
+      Skilled in curriculum development, team collaboration, and fostering student growth. Passionate about integrating technology into education 
+      and leveraging data-driven approaches to problem-solving. Currently advancing skills in programming, data analysis, and computer science 
+      to enhance professional capabilities.
+    </p>
+  </section>
+
+  <!-- Core Competencies -->
+  <section>
+    <h2>Core Competencies</h2>
+    <ul>
+      <li>Effective Communication and Classroom Management</li>
+      <li>Curriculum Planning and Instructional Design</li>
+      <li>Leadership and Team Collaboration</li>
+      <li>Technical Proficiency in Programming and Data Analysis</li>
+      <li>Project Management and Organizational Skills</li>
+      <li>Problem-Solving and Critical Thinking</li>
+    </ul>
+  </section>
+
+  <!-- Work Experience -->
+  <section>
+    <h2>Work Experience</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Position</th>
+          <th>Organization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05/17/2024</td>
+          <td>08/30/2024</td>
+          <td>Science Teacher</td>
+          <td>Sisaket Witthayalai School</td>
+        </tr>
+        <tr>
+          <td>05/01/2023</td>
+          <td>05/15/2024</td>
+          <td>Science Teacher</td>
+          <td>Darasamutr School Sri Racha</td>
+        </tr>
+        <tr>
+          <td>03/20/2022</td>
+          <td>04/04/2023</td>
+          <td>Science Teacher</td>
+          <td>Matthayom Watmai Krungthong School</td>
+        </tr>
+        <tr>
+          <td>08/03/2021</td>
+          <td>03/10/2022</td>
+          <td>Call Center Agent</td>
+          <td>Teleperformance Inc</td>
+        </tr>
+        <tr>
+          <td>01/05/2020</td>
+          <td>06/07/2021</td>
+          <td>Administrative Assistant</td>
+          <td>Hinoba-an LGU</td>
+        </tr>
+        <tr>
+          <td>02/15/2019</td>
+          <td>12/31/2019</td>
+          <td>Business Development Manager</td>
+          <td>Personal Collection Inc</td>
+        </tr>
+        <tr>
+          <td>06/01/2017</td>
+          <td>02/15/2019</td>
+          <td>Teacher 1</td>
+          <td>Culipapa National High School</td>
+        </tr>
+        <tr>
+          <td>03/11/2016</td>
+          <td>03/15/2017</td>
+          <td>Call Center Agent</td>
+          <td>Teletech Iloilo</td>
+        </tr>
+        <tr>
+          <td>06/05/2014</td>
+          <td>12/31/2015</td>
+          <td>Clerk</td>
+          <td>Professional Regulations Commission</td>
+        </tr>
+        <tr>
+          <td>04/09/2009</td>
+          <td>05/10/2014</td>
+          <td>Computer Technician</td>
+          <td>B and VC Computer Trading</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li>Master of Arts in Education (Biology Teaching) – (42 units, currently enrolled) – Marinduque State University, Philippines</li>
+      <li>Bachelor of Secondary Education (Major in Biological Sciences) – University of Negros Occidental-Recoletos, Philippines</li>
+      <li>Introduction to Programming and Computer Science – Codecademy, FreeCodeCamp</li>
+    </ul>
+  </section>
+
+  <!-- Technical Skills -->
+  <section>
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Programming Languages:</strong> Python, JavaScript, foundational OOP and algorithms</li>
+      <li><strong>Web Development:</strong> Basic knowledge of HTML, CSS, JavaScript</li>
+      <li><strong>Data Analysis:</strong> Proficiency in Excel, pandas library for visualization</li>
+      <li><strong>Version Control:</strong> Git and GitHub</li>
+      <li><strong>Problem-Solving:</strong> Advanced debugging and logical thinking skills</li>
+    </ul>
+  </section>
+
+  <!-- Contact Information -->
+  <section>
+    <h2>Contact Information</h2>
+    <p>Email: w248999@gmail.com</p>
+    <p>Phone: +639569116243</p>
+    <p>Location: Sri Racha, Thailand</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Your Name. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
