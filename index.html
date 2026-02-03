@@ -3,39 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Full-Stack Developer Portfolio</title>
+    <meta name="description" content="Harvee Agravante - Self-taught IT enthusiast. No formal training, just Google and trial-and-error since high school. Saw buggy school ERP, rebuilt it better. Built School ERP Ultimate, teacher evaluation systems, Android/iOS apps through patient learning. $15K cost savings, 500+ users served.">
+    <meta name="keywords" content="self-taught developer, IT enthusiast, reverse engineering, school ERP, mobile automation, trial and error learning, patient debugging, Google learning, no formal training, Bangkok developer">
+    <meta name="author" content="Harvee Agravante">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Harvee Agravante - Self-Taught IT Enthusiast & Systems Builder">
+    <meta property="og:description" content="No formal training. Learned through Google, ChatGPT rate limits, and countless mistakes. Saw flawed software, rebuilt it better. IT enthusiast since high school.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/harveeagravante">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harvee Agravante - IT Enthusiast">
+    <meta name="twitter:description" content="Self-taught developer. Learned by breaking things and fixing them. Built School ERP Ultimate from analyzing flawed software.">
+    
+    <title>Harvee Agravante - Self-Taught IT Enthusiast & Systems Builder</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #0A0E27;
-            --secondary: #1A1F3A;
-            --accent: #00F5FF;
-            --accent-warm: #FF6B35;
-            --text: #E8EAF6;
-            --text-dim: #A5A9C5;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --color-bg: #0a0e17;
+            --color-surface: #111827;
+            --color-surface-elevated: #1a2234;
+            --color-primary: #00ff88;
+            --color-primary-dim: #00cc6a;
+            --color-accent: #ff0080;
+            --color-text: #e2e8f0;
+            --color-text-dim: #94a3b8;
+            --color-border: #1e293b;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --spacing-unit: 0.5rem;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Work Sans', sans-serif;
-            background: var(--primary);
-            color: var(--text);
+            font-family: var(--font-mono);
+            background: var(--color-bg);
+            color: var(--color-text);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
-
-        /* Background Effect */
+        
+        /* Animated background grid */
         body::before {
             content: '';
             position: fixed;
@@ -43,475 +67,76 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
             pointer-events: none;
             z-index: 0;
         }
-
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Gradient orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--color-primary);
+            top: -10%;
+            right: -10%;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--color-accent);
+            bottom: -10%;
+            left: -10%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(40px, 50px) scale(1.05); }
+        }
+        
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: calc(var(--spacing-unit) * 4);
             position: relative;
             z-index: 1;
         }
-
-        /* Header */
+        
+        /* Header Section */
         header {
-            padding: 2rem 0;
-            position: sticky;
-            top: 0;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
-        }
-
-        nav {
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 400;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 4rem 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-subtitle {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .hero-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-description {
-            font-size: 1.3rem;
-            color: var(--text-dim);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid var(--text-dim);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 8rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-tag {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .project-card {
-            background: var(--secondary);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:nth-child(2)::before {
-            background: var(--gradient-2);
-        }
-
-        .project-card:nth-child(3)::before {
-            background: var(--gradient-3);
-        }
-
-        .project-card:nth-child(4)::before {
-            background: var(--gradient-4);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 245, 255, 0.3);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-header {
-            padding: 2.5rem 2.5rem 0;
-        }
-
-        .project-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-        }
-
-        .project-card:nth-child(2) .project-icon {
-            background: var(--gradient-2);
-        }
-
-        .project-card:nth-child(3) .project-icon {
-            background: var(--gradient-3);
-        }
-
-        .project-card:nth-child(4) .project-icon {
-            background: var(--gradient-4);
-        }
-
-        .project-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .project-body {
-            padding: 0 2.5rem 2.5rem;
-        }
-
-        .project-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .project-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
             position: relative;
-            color: var(--text-dim);
         }
-
-        .project-features li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.2rem;
+        
+        .header-content {
+            animation: fadeInUp 1s var(--transition-smooth);
         }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(0, 245, 255, 0.1);
-            color: var(--accent);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(0, 245, 255, 0.2);
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 8rem 0;
-            background: var(--secondary);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .skill-category {
-            background: var(--primary);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            border-color: rgba(0, 245, 255, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .skill-item {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            background: rgba(0, 245, 255, 0.1);
-            color: var(--accent);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 8rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .stat-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 4rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 8rem 0;
-            background: var(--secondary);
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 4rem auto 0;
-            text-align: center;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1.2rem 2rem;
-            background: var(--primary);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-link:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-dim);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Animations */
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -522,412 +147,960 @@
                 transform: translateY(0);
             }
         }
-
+        
+        .status-badge {
+            display: inline-block;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--color-primary);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            animation: fadeInUp 1s var(--transition-smooth) 0.2s backwards;
+        }
+        
+        .status-badge::before {
+            content: '●';
+            color: var(--color-primary);
+            margin-right: calc(var(--spacing-unit) * 1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            animation: fadeInUp 1s var(--transition-smooth) 0.3s backwards;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            color: var(--color-text-dim);
+            max-width: 800px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            line-height: 1.8;
+            animation: fadeInUp 1s var(--transition-smooth) 0.4s backwards;
+        }
+        
+        .subtitle strong {
+            color: var(--color-text);
+            font-weight: 700;
+        }
+        
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: calc(var(--spacing-unit) * 6);
+            margin: calc(var(--spacing-unit) * 8) 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s var(--transition-smooth) 0.5s backwards;
+        }
+        
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        }
+        
+        .philosophy h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+        
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 4);
+        }
+        
+        .philosophy-card {
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 4);
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .philosophy-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
+        }
+        
+        .philosophy-card .icon {
+            font-size: 2rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            display: block;
+        }
+        
+        .philosophy-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            color: var(--color-primary);
+        }
+        
+        .philosophy-card p {
+            color: var(--color-text-dim);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        
+        /* Journey Timeline */
+        .journey {
+            margin: calc(var(--spacing-unit) * 12) 0;
+        }
+        
+        .journey h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                transparent,
+                var(--color-primary) 10%,
+                var(--color-primary) 90%,
+                transparent
+            );
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            opacity: 0;
+            animation: fadeInUp 0.6s var(--transition-smooth) forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: calc(50% + 40px);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + 40px);
+            margin-right: auto;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--color-primary);
+            border: 4px solid var(--color-bg);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        
+        .timeline-content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 4);
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .timeline-content:hover {
+            border-color: var(--color-primary);
+            transform: scale(1.02);
+        }
+        
+        .timeline-year {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+        
+        .timeline-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .timeline-description {
+            color: var(--color-text-dim);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        
+        /* Tech Stack */
+        .tech-stack {
+            margin: calc(var(--spacing-unit) * 12) 0;
+        }
+        
+        .tech-stack h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            text-align: center;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: calc(var(--spacing-unit) * 3);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .tech-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 3);
+            text-align: center;
+            transition: all 0.3s var(--transition-smooth);
+            opacity: 0;
+            animation: fadeInUp 0.5s var(--transition-smooth) forwards;
+        }
+        
+        .tech-item:nth-child(n) { animation-delay: calc(0.05s * var(--index)); }
+        
+        .tech-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: var(--color-primary);
+            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.15);
+        }
+        
+        .tech-item span {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            display: block;
+        }
+        
+        /* Projects Showcase */
+        .projects {
+            margin: calc(var(--spacing-unit) * 12) 0;
+        }
+        
+        .projects h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            text-align: center;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: calc(var(--spacing-unit) * 6);
+        }
+        
+        .project-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: calc(var(--spacing-unit) * 5);
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--transition-smooth);
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.1);
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            display: block;
+        }
+        
+        .project-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .project-card p {
+            color: var(--color-text-dim);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            line-height: 1.7;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--spacing-unit) * 1.5);
+        }
+        
+        .tech-tag {
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* CTA Section */
+        .cta {
+            margin: calc(var(--spacing-unit) * 12) 0;
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05), transparent 70%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+        
+        .cta p {
+            font-size: 1.125rem;
+            color: var(--color-text-dim);
+            max-width: 600px;
+            margin: 0 auto calc(var(--spacing-unit) * 6);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 2);
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 6);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            border: 2px solid var(--color-primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-primary-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: calc(var(--spacing-unit) * 12);
+            padding: calc(var(--spacing-unit) * 8) 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 4);
+            justify-content: center;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 2);
+            padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+            color: var(--color-text);
+            text-decoration: none;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .social-link:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            color: var(--color-text-dim);
+            font-size: 0.875rem;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
+            .container {
+                padding: calc(var(--spacing-unit) * 3);
             }
-
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+            
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
+            
             .cta-buttons {
                 flex-direction: column;
+                align-items: stretch;
             }
-
+            
             .btn {
-                text-align: center;
+                justify-content: center;
             }
         }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        
+        /* Focus styles */
+        *:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 4px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">HARVEE AGRAVANTE</div>
-                <ul class="nav-links">
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-subtitle">Full-Stack Developer & Solution Architect</div>
-                    <h1 class="hero-title">Building Digital Experiences That Scale</h1>
-                    <p class="hero-description">
-                        I create enterprise-grade applications from School ERP systems to e-commerce platforms, 
-                        mobile apps, and booking solutions. Transforming complex challenges into elegant, 
-                        scalable solutions.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="status-badge">Available for Custom Development & IT Consulting</div>
+                
+                <h1>
+                    Harvee Agravante<br>
+                    <span class="gradient-text">Self-Taught IT Enthusiast & Systems Builder</span>
+                </h1>
+                
+                <p class="subtitle">
+                    <strong>No formal training. Just relentless curiosity and trial-and-error since high school.</strong> I see buggy software, 
+                    analyze its flaws, and rebuild it better. Saw a broken school ERP system—rebuilt it as <strong>School ERP Ultimate</strong>. 
+                    Built school portals, teacher evaluation systems, Android/iOS automation. <strong>Learned everything from Google searches, 
+                    waiting hours for rate-limited ChatGPT responses, and countless failed attempts.</strong> From car sales to IT systems architect. 
+                    Every bug taught me. Every mistake made me better. <strong>Delivered $15K+ savings, 80% efficiency gains, 500+ users served—all 
+                    through patience, persistence, and self-taught problem-solving.</strong>
+                </p>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-tag">Portfolio</div>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-description">
-                        Crafting solutions that make a difference
-                    </p>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- School ERP -->
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">🏫</div>
-                            <h3 class="project-title">School ERP System</h3>
-                            <p class="project-description">
-                                Comprehensive Educational Resource Planning system streamlining school 
-                                administration, student management, and academic operations.
-                            </p>
-                        </div>
-                        <div class="project-body">
-                            <ul class="project-features">
-                                <li>Student enrollment & attendance tracking</li>
-                                <li>Grade management & automated report cards</li>
-                                <li>Parent-teacher communication portal</li>
-                                <li>Fee management with payment integration</li>
-                                <li>Timetable scheduling & resource allocation</li>
-                                <li>Multi-role access control system</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Express</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Docker</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- E-Commerce -->
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">🛍️</div>
-                            <h3 class="project-title">E-Commerce Platform</h3>
-                            <p class="project-description">
-                                Full-featured online commerce solution with modern shopping experiences 
-                                and robust backend infrastructure.
-                            </p>
-                        </div>
-                        <div class="project-body">
-                            <ul class="project-features">
-                                <li>Advanced product catalog with AI search</li>
-                                <li>Shopping cart & wishlist functionality</li>
-                                <li>Secure payment gateway integration</li>
-                                <li>Real-time order tracking</li>
-                                <li>Inventory management system</li>
-                                <li>Admin analytics dashboard</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Next.js</span>
-                                <span class="tech-tag">TypeScript</span>
-                                <span class="tech-tag">Stripe API</span>
-                                <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">AWS</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Development -->
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">📱</div>
-                            <h3 class="project-title">Cross-Platform Mobile Apps</h3>
-                            <p class="project-description">
-                                Native-quality mobile applications for iOS and Android with seamless 
-                                user experiences and real-time features.
-                            </p>
-                        </div>
-                        <div class="project-body">
-                            <ul class="project-features">
-                                <li>Social networking with real-time messaging</li>
-                                <li>Fitness tracking & wellness applications</li>
-                                <li>Food delivery platform</li>
-                                <li>Mobile banking interface</li>
-                                <li>Offline-first architecture</li>
-                                <li>Push notifications & deep linking</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">Kotlin</span>
-                                <span class="tech-tag">Firebase</span>
-                                <span class="tech-tag">GraphQL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Booking App -->
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">🏨</div>
-                            <h3 class="project-title">Hotel & Booking System</h3>
-                            <p class="project-description">
-                                Comprehensive booking management for hotels, restaurants, and service 
-                                businesses with real-time availability.
-                            </p>
-                        </div>
-                        <div class="project-body">
-                            <ul class="project-features">
-                                <li>Real-time availability calendar</li>
-                                <li>Customer management & booking history</li>
-                                <li>Automated payment processing</li>
-                                <li>Room/resource management system</li>
-                                <li>Business analytics dashboard</li>
-                                <li>Email & SMS notifications</li>
-                            </ul>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Celery</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">Nginx</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-tag">Expertise</div>
-                    <h2 class="section-title">Technical Skills</h2>
-                    <p class="section-description">
-                        Full-stack mastery across modern technologies
+        </header>
+        
+        <!-- Philosophy Section -->
+        <section class="philosophy">
+            <h2>Engineering Philosophy: <span class="gradient-text">Learn by Breaking, Build by Fixing</span></h2>
+            
+            <p style="margin-bottom: calc(var(--spacing-unit) * 4); color: var(--color-text-dim); font-size: 1.0625rem;">
+                <strong style="color: var(--color-text);">No bootcamp. No CS degree. No formal training. Just a high school kid obsessed with 
+                software tools.</strong> I spent hours waiting for rate-limited free ChatGPT accounts to refresh just to ask one more question. 
+                Googled error messages hundreds of times. Broke things, fixed them, broke them again. <strong style="color: var(--color-text);">
+                Saw a buggy school ERP system full of flaws—studied it, understood it, rebuilt it better as School ERP Ultimate.</strong> Built 
+                teacher evaluation systems, school portals, Android/iOS automation—all through patient trial-and-error. From car sales to IT systems. 
+                <strong style="color: var(--color-text);">Every mistake was a lesson. Every bug was a teacher. Every failed attempt made the next one better.</strong>
+            </p>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <span class="icon">🔧</span>
+                    <h3>Reverse Engineering Mindset</h3>
+                    <p>
+                        I don't just use software—I analyze it. Saw a school ERP with bugs and limitations, reverse-engineered its logic, 
+                        identified flaws, and rebuilt it better. <strong>School ERP Ultimate</strong> was born from understanding what 
+                        didn't work and engineering what should.
                     </p>
                 </div>
-
-                <div class="skills-grid">
-                    <div class="skill-category fade-in">
-                        <h3>Frontend Development</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">React</span>
-                            <span class="skill-item">Next.js</span>
-                            <span class="skill-item">Vue.js</span>
-                            <span class="skill-item">TypeScript</span>
-                            <span class="skill-item">JavaScript</span>
-                            <span class="skill-item">HTML5/CSS3</span>
-                            <span class="skill-item">Tailwind CSS</span>
-                            <span class="skill-item">SASS/SCSS</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category fade-in">
-                        <h3>Backend Development</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Node.js</span>
-                            <span class="skill-item">Express</span>
-                            <span class="skill-item">Django</span>
-                            <span class="skill-item">Python</span>
-                            <span class="skill-item">REST APIs</span>
-                            <span class="skill-item">GraphQL</span>
-                            <span class="skill-item">Microservices</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category fade-in">
-                        <h3>Mobile Development</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">React Native</span>
-                            <span class="skill-item">Flutter</span>
-                            <span class="skill-item">Swift</span>
-                            <span class="skill-item">Kotlin</span>
-                            <span class="skill-item">iOS Development</span>
-                            <span class="skill-item">Android Development</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category fade-in">
-                        <h3>Databases</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">PostgreSQL</span>
-                            <span class="skill-item">MongoDB</span>
-                            <span class="skill-item">MySQL</span>
-                            <span class="skill-item">Redis</span>
-                            <span class="skill-item">Firebase</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category fade-in">
-                        <h3>DevOps & Cloud</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Docker</span>
-                            <span class="skill-item">AWS</span>
-                            <span class="skill-item">Google Cloud</span>
-                            <span class="skill-item">CI/CD</span>
-                            <span class="skill-item">Nginx</span>
-                            <span class="skill-item">Git</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category fade-in">
-                        <h3>Tools & Others</h3>
-                        <div class="skill-list">
-                            <span class="skill-item">Figma</span>
-                            <span class="skill-item">Jira</span>
-                            <span class="skill-item">Postman</span>
-                            <span class="skill-item">VS Code</span>
-                            <span class="skill-item">Agile/Scrum</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-tag">Achievements</div>
-                    <h2 class="section-title">By The Numbers</h2>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Happy Clients</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-tag">Get In Touch</div>
-                    <h2 class="section-title">Let's Build Something Amazing</h2>
-                    <p class="section-description">
-                        Have a project in mind? Let's discuss how we can work together
+                
+                <div class="philosophy-card">
+                    <span class="icon">🎓</span>
+                    <h3>Self-Taught Since High School</h3>
+                    <p>
+                        IT enthusiast from day one. Spent countless hours searching for software tools, learning how they work, breaking them 
+                        to understand them. No formal training—just curiosity, Google searches, and waiting patiently for free ChatGPT rate 
+                        limits to reset so I could ask one more question.
                     </p>
                 </div>
-
-                <div class="contact-content">
-                    <div class="contact-links">
-                        <a href="/cdn-cgi/l/email-protection#5437383b213035336661143339353d387a373b39" class="contact-link fade-in">
-                            <span class="contact-icon">📧</span>
-                            <span>Email Me</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kimharvee/" class="contact-link fade-in">
-                            <span class="contact-icon">💼</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://kimharvee.github.io/Online_Portfolio/" class="contact-link fade-in">
-                            <span class="contact-icon">🌐</span>
-                            <span>Portfolio</span>
-                        </a>
+                
+                <div class="philosophy-card">
+                    <span class="icon">⚡</span>
+                    <h3>Trial, Error, Patience, Success</h3>
+                    <p>
+                        Every system I built failed multiple times before it worked. <strong>Learned by mistakes, everyday.</strong> Teacher 
+                        evaluations? Failed three times before deployment. Mobile automation? Crashed repeatedly until it didn't. That's how 
+                        I learn—break it, fix it, understand it, build it better.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Journey Timeline -->
+        <section class="journey">
+            <h2><span class="gradient-text">Evolution:</span> IT Enthusiast to Systems Builder</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">High School Era</div>
+                        <h3 class="timeline-title">Origin: The Curious IT Enthusiast</h3>
+                        <p class="timeline-description">
+                            Obsessed with software tools and how things work. Spent hours searching for programs, breaking them to understand them, 
+                            Googling error messages, waiting for free ChatGPT accounts to refresh just to ask questions. <strong>No formal training, 
+                            no teachers—just curiosity and patience.</strong> Learned that mistakes aren't failures, they're lessons.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Car Sales Era</div>
+                        <h3 class="timeline-title">First Chapter: Wrong Career, Right Lessons</h3>
+                        <p class="timeline-description">
+                            Worked in automotive sales. Saw inefficient systems, manual processes, wasted time. Started building small automation 
+                            scripts for personal use. <strong>Realized: my IT skills were more valuable than sales skills.</strong> Decided to 
+                            pivot careers toward technology.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017-2020</div>
+                        <h3 class="timeline-title">Discovery: Flawed Software, Better Ideas</h3>
+                        <p class="timeline-description">
+                            Transitioned to education sector. Encountered a school ERP system—<strong>buggy, slow, full of flaws.</strong> Studied how 
+                            it worked, identified every limitation, understood its architecture. Thought: "I can build this better." Started building 
+                            <strong>School ERP Ultimate</strong>—not from scratch, but from understanding what was broken and fixing it properly.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020-2023</div>
+                        <h3 class="timeline-title">Expansion: Mobile Automation & System Building</h3>
+                        <p class="timeline-description">
+                            Learned Android/iOS development through trial and error. Built teacher evaluation systems, school portals, mobile apps. 
+                            <strong>Failed repeatedly. Debugged patiently. Improved constantly.</strong> Every redundant manual process I saw became 
+                            an automation opportunity. Deployed systems serving real users, solving real problems.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023-Present</div>
+                        <h3 class="timeline-title">Validation: Production Systems, Real Impact</h3>
+                        <p class="timeline-description">
+                            IT Specialist at Beaconhouse Yamsaard. <strong>School ERP Ultimate deployed. Teacher evaluation systems running. 
+                            Mobile automation serving 500+ users. $15K+ cost savings. 80% efficiency gains.</strong> All built through self-teaching, 
+                            patient troubleshooting, and learning from every mistake. Proved: formal training is optional, relentless learning is essential.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Harvee Agravante. Crafted with passion and code.</p>
-        </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Smooth scrolling
+        
+        <!-- Tech Stack -->
+        <section class="tech-stack">
+            <h2><span class="gradient-text">Self-Taught Arsenal</span> <span style="font-size: 0.6em; font-weight: 400; color: var(--color-text-dim);">(Google, YouTube, Trial & Error)</span></h2>
+            
+            <div class="tech-grid">
+                <div class="tech-item" style="--index: 1"><span>Python</span></div>
+                <div class="tech-item" style="--index: 2"><span>JavaScript</span></div>
+                <div class="tech-item" style="--index: 3"><span>React Native</span></div>
+                <div class="tech-item" style="--index: 4"><span>Flutter</span></div>
+                <div class="tech-item" style="--index: 5"><span>Android Development</span></div>
+                <div class="tech-item" style="--index: 6"><span>iOS Development</span></div>
+                <div class="tech-item" style="--index: 7"><span>HTML/CSS</span></div>
+                <div class="tech-item" style="--index: 8"><span>Database Design</span></div>
+                <div class="tech-item" style="--index: 9"><span>Git/GitHub</span></div>
+                <div class="tech-item" style="--index: 10"><span>Google Workspace API</span></div>
+                <div class="tech-item" style="--index: 11"><span>Microsoft Graph API</span></div>
+                <div class="tech-item" style="--index: 12"><span>Excel Automation</span></div>
+                <div class="tech-item" style="--index: 13"><span>Data Analysis</span></div>
+                <div class="tech-item" style="--index: 14"><span>PowerShell</span></div>
+                <div class="tech-item" style="--index: 15"><span>Bash Scripting</span></div>
+                <div class="tech-item" style="--index: 16"><span>System Administration</span></div>
+                <div class="tech-item" style="--index: 17"><span>API Integration</span></div>
+                <div class="tech-item" style="--index: 18"><span>Process Automation</span></div>
+            </div>
+        </section>
+        
+        <!-- Projects Showcase -->
+        <section class="projects">
+            <h2><span class="gradient-text">Built By Learning:</span> Reverse Engineering & Improvement</h2>
+            
+            <div class="projects-grid">
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">🎓</span>
+                    <h3>School ERP Ultimate</h3>
+                    <p>
+                        <strong>Saw buggy commercial ERP, analyzed its flaws, rebuilt it better.</strong> Studied existing system's architecture, 
+                        identified limitations (slow performance, poor UX, missing features), and engineered superior alternative. Complete student 
+                        management, grading, attendance, parent portals, financial modules. <strong>Deployed in production, serving 500+ users.</strong>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Reverse Engineering</span>
+                        <span class="tech-tag">System Analysis</span>
+                        <span class="tech-tag">Self-Taught</span>
+                        <span class="tech-tag">Production-Grade</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">🌐</span>
+                    <h3>School Portal Systems</h3>
+                    <p>
+                        Built comprehensive web portals for students, parents, and teachers. Learned web development through trial-and-error—broke 
+                        layouts dozens of times before understanding responsive design. <strong>Every bug taught me. Every mistake improved the next version.</strong>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Web Development</span>
+                        <span class="tech-tag">Trial & Error Learning</span>
+                        <span class="tech-tag">User Experience</span>
+                        <span class="tech-tag">Responsive Design</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">📊</span>
+                    <h3>Teacher Evaluation System (Current School)</h3>
+                    <p>
+                        Saw manual evaluation process wasting hours weekly. Built automated system through patient problem-solving. <strong>Failed 
+                        three times before successful deployment.</strong> Digital workflows, automated scoring, data visualization, trend analysis. 
+                        70% time reduction—learned by fixing what didn't work.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Process Automation</span>
+                        <span class="tech-tag">Learn By Failure</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">📱</span>
+                    <h3>Mobile Automation (Android/iOS)</h3>
+                    <p>
+                        Never touched mobile development before. Googled "how to build Android app," watched YouTube tutorials, broke code repeatedly, 
+                        debugged patiently. <strong>Learned React Native through countless crashes and rebuilds.</strong> Built parent portals, teacher 
+                        apps, student interfaces. Now serving 500+ mobile users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Self-Taught Mobile Dev</span>
+                        <span class="tech-tag">Google & YouTube</span>
+                        <span class="tech-tag">Patience & Debugging</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">💰</span>
+                    <h3>Zero-Cost Enterprise Infrastructure</h3>
+                    <p>
+                        School paying $15K+ for subscriptions. Researched free alternatives, learned Google Workspace Admin SDK, Microsoft Graph API. 
+                        <strong>Waited hours for free ChatGPT responses to understand API documentation.</strong> Built automation scripts through trial-and-error. 
+                        Result: $15K saved, 500+ users on free enterprise tools.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Google Workspace API</span>
+                        <span class="tech-tag">Microsoft Graph</span>
+                        <span class="tech-tag">API Learning</span>
+                        <span class="tech-tag">Cost Optimization</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">⚡</span>
+                    <h3>IXL Analytics Automation</h3>
+                    <p>
+                        Manual data analysis taking hours weekly. Taught myself Python data processing, pandas library, Excel automation. <strong>Broke 
+                        scripts dozens of times learning data manipulation.</strong> Built automated diagnostic system. 80% time reduction—learned through 
+                        persistent debugging.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Analysis</span>
+                        <span class="tech-tag">Self-Taught Pandas</span>
+                        <span class="tech-tag">Excel Automation</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">🎮</span>
+                    <h3>Gamified Coding Platform</h3>
+                    <p>
+                        Integrated Roblox Education, Minecraft Education, Code.org. Learned JavaScript through Roblox Studio documentation. <strong>Failed 
+                        to deploy properly multiple times—learned by fixing mistakes.</strong> Built automated progress tracking. Scaled from 20 to 200+ students 
+                        through patient iteration.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Roblox Studio</span>
+                        <span class="tech-tag">Learn By Mistakes</span>
+                        <span class="tech-tag">Gamification</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <span class="project-icon" aria-hidden="true">🤖</span>
+                    <h3>Platform Administration Automation</h3>
+                    <p>
+                        15 hours/week on manual user management. Studied Google Admin SDK, Microsoft PowerShell. <strong>Googled every error message, 
+                        waited for rate-limited ChatGPT accounts to refresh for help.</strong> Built automation scripts. Now 2 hours/week—87% reduction 
+                        through self-taught scripting.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Bash Scripting</span>
+                        <span class="tech-tag">Google Admin SDK</span>
+                        <span class="tech-tag">ChatGPT Learning</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="cta">
+            <div class="cta-content">
+                <h2><span class="gradient-text">Need Software Built or Buggy Systems Fixed?</span></h2>
+                <p>
+                    I specialize in reverse engineering flawed software and building better alternatives. <strong>Saw buggy school ERP, analyzed 
+                    it, rebuilt it as School ERP Ultimate.</strong> Built teacher evaluation systems, school portals, Android/iOS apps—all through 
+                    patient trial-and-error and self-teaching. <strong>No formal training, just relentless problem-solving.</strong> If your software 
+                    is broken, slow, or expensive, I can analyze it and build you something better. Let's discuss what you need fixed or built.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:w248999@gmail.com" class="btn btn-primary">
+                        <span>Discuss Your Project</span>
+                    </a>
+                    <a href="https://github.com/harveeagravante" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        <span>View GitHub Projects</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/harveeagravante" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <span>GitHub</span>
+                    <span class="sr-only">(opens in new window)</span>
+                </a>
+                <a href="https://linkedin.com/in/harveeagravante" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <span>LinkedIn</span>
+                    <span class="sr-only">(opens in new window)</span>
+                </a>
+                <a href="mailto:w248999@gmail.com" class="social-link">
+                    <span>Email</span>
+                </a>
+            </div>
+            
+            <p class="copyright">
+                © 2026 Harvee Agravante. IT enthusiast since high school. No formal training—just Google, patience, and trial-and-error.<br>
+                Saw buggy software, rebuilt it better. Learned by breaking things and fixing them.<br>
+                Bangkok, Thailand | Available for custom development, system analysis, & IT consulting
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
-
-        // Intersection Observer for fade-in animations
+        
+        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
+        
+        // Observe all animated elements
+        document.querySelectorAll('.philosophy-card, .project-card, .tech-item').forEach(el => {
             observer.observe(el);
         });
-
-        // Add active state to nav links
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section[id]');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href')
+    </script>
+</body>
+</html>
