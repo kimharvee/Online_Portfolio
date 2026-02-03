@@ -1,232 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harvee Agravante - Professional Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-    }
-    header {
-      background-color: #0078d7;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    header p {
-      margin: 5px 0 0;
-    }
-    main {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    section {
-      margin-bottom: 20px;
-    }
-    section h2 {
-      margin-bottom: 10px;
-      color: #0078d7;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    table th {
-      background-color: #0078d7;
-      color: white;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: white;
-      margin-top: 20px;
-    }
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
-    }
-    p {
-      line-height: 1.6;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Full-Stack Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A0E27;
+            --secondary: #1A1F3A;
+            --accent: #00F5FF;
+            --accent-warm: #FF6B35;
+            --text: #E8EAF6;
+            --text-dim: #A5A9C5;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--text-dim);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: var(--secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:nth-child(2)::before {
+            background: var(--gradient-2);
+        }
+
+        .project-card:nth-child(3)::before {
+            background: var(--gradient-3);
+        }
+
+        .project-card:nth-child(4)::before {
+            background: var(--gradient-4);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header {
+            padding: 2.5rem 2.5rem 0;
+        }
+
+        .project-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+        }
+
+        .project-card:nth-child(2) .project-icon {
+            background: var(--gradient-2);
+        }
+
+        .project-card:nth-child(3) .project-icon {
+            background: var(--gradient-3);
+        }
+
+        .project-card:nth-child(4) .project-icon {
+            background: var(--gradient-4);
+        }
+
+        .project-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-body {
+            padding: 0 2.5rem 2.5rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .project-features li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--accent);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 8rem 0;
+            background: var(--secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .skill-category {
+            background: var(--primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--accent);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 8rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: var(--secondary);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.2rem 2rem;
+            background: var(--primary);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">HARVEE AGRAVANTE</div>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  <h1>Harvee Agravante</h1>
-  <p>Science Teacher | Administrative Professional | IT Enthusiast</p>
-</header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-subtitle">Full-Stack Developer & Solution Architect</div>
+                    <h1 class="hero-title">Building Digital Experiences That Scale</h1>
+                    <p class="hero-description">
+                        I create enterprise-grade applications from School ERP systems to e-commerce platforms, 
+                        mobile apps, and booking solutions. Transforming complex challenges into elegant, 
+                        scalable solutions.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<main>
-  <!-- Professional Summary -->
-  <section>
-    <h2>Professional Summary</h2>
-    <p>
-      Experienced science teacher with over a decade of diverse professional experience spanning education, business development, and IT. 
-      Skilled in curriculum development, team collaboration, and fostering student growth. Passionate about integrating technology into education 
-      and leveraging data-driven approaches to problem-solving. Currently advancing skills in programming, data analysis, and computer science 
-      to enhance professional capabilities.
-    </p>
-  </section>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-tag">Portfolio</div>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Crafting solutions that make a difference
+                    </p>
+                </div>
 
-  <!-- Core Competencies -->
-  <section>
-    <h2>Core Competencies</h2>
-    <ul>
-      <li>Effective Communication and Classroom Management</li>
-      <li>Curriculum Planning and Instructional Design</li>
-      <li>Leadership and Team Collaboration</li>
-      <li>Technical Proficiency in Programming and Data Analysis</li>
-      <li>Project Management and Organizational Skills</li>
-      <li>Problem-Solving and Critical Thinking</li>
-    </ul>
-  </section>
+                <div class="projects-grid">
+                    <!-- School ERP -->
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🏫</div>
+                            <h3 class="project-title">School ERP System</h3>
+                            <p class="project-description">
+                                Comprehensive Educational Resource Planning system streamlining school 
+                                administration, student management, and academic operations.
+                            </p>
+                        </div>
+                        <div class="project-body">
+                            <ul class="project-features">
+                                <li>Student enrollment & attendance tracking</li>
+                                <li>Grade management & automated report cards</li>
+                                <li>Parent-teacher communication portal</li>
+                                <li>Fee management with payment integration</li>
+                                <li>Timetable scheduling & resource allocation</li>
+                                <li>Multi-role access control system</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <!-- Work Experience -->
-  <section>
-    <h2>Work Experience</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Position</th>
-          <th>Organization</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>05/17/2024</td>
-          <td>08/30/2024</td>
-          <td>Science Teacher</td>
-          <td>Sisaket Witthayalai School</td>
-        </tr>
-        <tr>
-          <td>05/01/2023</td>
-          <td>05/15/2024</td>
-          <td>Science Teacher</td>
-          <td>Darasamutr School Sri Racha</td>
-        </tr>
-        <tr>
-          <td>03/20/2022</td>
-          <td>04/04/2023</td>
-          <td>Science Teacher</td>
-          <td>Matthayom Watmai Krungthong School</td>
-        </tr>
-        <tr>
-          <td>08/03/2021</td>
-          <td>03/10/2022</td>
-          <td>Call Center Agent</td>
-          <td>Teleperformance Inc</td>
-        </tr>
-        <tr>
-          <td>01/05/2020</td>
-          <td>06/07/2021</td>
-          <td>Administrative Assistant</td>
-          <td>Hinoba-an LGU</td>
-        </tr>
-        <tr>
-          <td>02/15/2019</td>
-          <td>12/31/2019</td>
-          <td>Business Development Manager</td>
-          <td>Personal Collection Inc</td>
-        </tr>
-        <tr>
-          <td>06/01/2017</td>
-          <td>02/15/2019</td>
-          <td>Teacher 1</td>
-          <td>Culipapa National High School</td>
-        </tr>
-        <tr>
-          <td>03/11/2016</td>
-          <td>03/15/2017</td>
-          <td>Call Center Agent</td>
-          <td>Teletech Iloilo</td>
-        </tr>
-        <tr>
-          <td>06/05/2014</td>
-          <td>12/31/2015</td>
-          <td>Clerk</td>
-          <td>Professional Regulations Commission</td>
-        </tr>
-        <tr>
-          <td>04/09/2009</td>
-          <td>05/10/2014</td>
-          <td>Computer Technician</td>
-          <td>B and VC Computer Trading</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+                    <!-- E-Commerce -->
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🛍️</div>
+                            <h3 class="project-title">E-Commerce Platform</h3>
+                            <p class="project-description">
+                                Full-featured online commerce solution with modern shopping experiences 
+                                and robust backend infrastructure.
+                            </p>
+                        </div>
+                        <div class="project-body">
+                            <ul class="project-features">
+                                <li>Advanced product catalog with AI search</li>
+                                <li>Shopping cart & wishlist functionality</li>
+                                <li>Secure payment gateway integration</li>
+                                <li>Real-time order tracking</li>
+                                <li>Inventory management system</li>
+                                <li>Admin analytics dashboard</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Stripe API</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <!-- Education -->
-  <section>
-    <h2>Education</h2>
-    <ul>
-      <li>Master of Arts in Education (Biology Teaching) – (42 units, currently enrolled) – Marinduque State University, Philippines</li>
-      <li>Bachelor of Secondary Education (Major in Biological Sciences) – University of Negros Occidental-Recoletos, Philippines</li>
-      <li>Introduction to Programming and Computer Science – Codecademy, FreeCodeCamp</li>
-    </ul>
-  </section>
+                    <!-- Mobile Development -->
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">📱</div>
+                            <h3 class="project-title">Cross-Platform Mobile Apps</h3>
+                            <p class="project-description">
+                                Native-quality mobile applications for iOS and Android with seamless 
+                                user experiences and real-time features.
+                            </p>
+                        </div>
+                        <div class="project-body">
+                            <ul class="project-features">
+                                <li>Social networking with real-time messaging</li>
+                                <li>Fitness tracking & wellness applications</li>
+                                <li>Food delivery platform</li>
+                                <li>Mobile banking interface</li>
+                                <li>Offline-first architecture</li>
+                                <li>Push notifications & deep linking</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">Kotlin</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">GraphQL</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <!-- Technical Skills -->
-  <section>
-    <h2>Technical Skills</h2>
-    <ul>
-      <li><strong>Programming Languages:</strong> Python, JavaScript, foundational OOP and algorithms</li>
-      <li><strong>Web Development:</strong> Basic knowledge of HTML, CSS, JavaScript</li>
-      <li><strong>Data Analysis:</strong> Proficiency in Excel, pandas library for visualization</li>
-      <li><strong>Version Control:</strong> Git and GitHub</li>
-      <li><strong>Problem-Solving:</strong> Advanced debugging and logical thinking skills</li>
-    </ul>
-  </section>
+                    <!-- Booking App -->
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">🏨</div>
+                            <h3 class="project-title">Hotel & Booking System</h3>
+                            <p class="project-description">
+                                Comprehensive booking management for hotels, restaurants, and service 
+                                businesses with real-time availability.
+                            </p>
+                        </div>
+                        <div class="project-body">
+                            <ul class="project-features">
+                                <li>Real-time availability calendar</li>
+                                <li>Customer management & booking history</li>
+                                <li>Automated payment processing</li>
+                                <li>Room/resource management system</li>
+                                <li>Business analytics dashboard</li>
+                                <li>Email & SMS notifications</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Celery</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Nginx</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Certificates and Achievements -->
-  <section>
-    <h2>Certificates and Achievements</h2>
-    <ul>
-      <li>TESOL Certification – International Open Academy</li>
-      <li>TEFL Certification – Teachers Record</li>
-      <li>EFSET English Certificate – C2 Proficiency (EFSET)</li>
-      <li>Google Analytics Individual Qualification</li>
-      <li>Python for Data Science Certification</li>
-      <li>Introduction to Cybersecurity</li>
-      <li>Data Science with Python</li>
-    </ul>
-    <p><em>Note: Certificates available upon request.</em></p>
-  </section>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-tag">Expertise</div>
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-description">
+                        Full-stack mastery across modern technologies
+                    </p>
+                </div>
 
-  <!-- Contact Information -->
-  <section>
-    <h2>Contact Information</h2>
-    <p>Email: w248999@gmail.com</p>
-    <p>Phone: +639569116243</p>
-    <p>Location: Sri Racha, Thailand</p>
-  </section>
-</main>
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>Frontend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">React</span>
+                            <span class="skill-item">Next.js</span>
+                            <span class="skill-item">Vue.js</span>
+                            <span class="skill-item">TypeScript</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">HTML5/CSS3</span>
+                            <span class="skill-item">Tailwind CSS</span>
+                            <span class="skill-item">SASS/SCSS</span>
+                        </div>
+                    </div>
 
-<footer>
-  <p>© 2025 Harvee Agravante. All Rights Reserved.</p>
-</footer>
+                    <div class="skill-category fade-in">
+                        <h3>Backend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Node.js</span>
+                            <span class="skill-item">Express</span>
+                            <span class="skill-item">Django</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">REST APIs</span>
+                            <span class="skill-item">GraphQL</span>
+                            <span class="skill-item">Microservices</span>
+                        </div>
+                    </div>
 
+                    <div class="skill-category fade-in">
+                        <h3>Mobile Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">React Native</span>
+                            <span class="skill-item">Flutter</span>
+                            <span class="skill-item">Swift</span>
+                            <span class="skill-item">Kotlin</span>
+                            <span class="skill-item">iOS Development</span>
+                            <span class="skill-item">Android Development</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Databases</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">PostgreSQL</span>
+                            <span class="skill-item">MongoDB</span>
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">Redis</span>
+                            <span class="skill-item">Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>DevOps & Cloud</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">AWS</span>
+                            <span class="skill-item">Google Cloud</span>
+                            <span class="skill-item">CI/CD</span>
+                            <span class="skill-item">Nginx</span>
+                            <span class="skill-item">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Tools & Others</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Figma</span>
+                            <span class="skill-item">Jira</span>
+                            <span class="skill-item">Postman</span>
+                            <span class="skill-item">VS Code</span>
+                            <span class="skill-item">Agile/Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-tag">Achievements</div>
+                    <h2 class="section-title">By The Numbers</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-tag">Get In Touch</div>
+                    <h2 class="section-title">Let's Build Something Amazing</h2>
+                    <p class="section-description">
+                        Have a project in mind? Let's discuss how we can work together
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-links">
+                        <a href="mailto:cloudag25@gmail.com" class="contact-link fade-in">
+                            <span class="contact-icon">📧</span>
+                            <span>Email Me</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/harvee-agravante" class="contact-link fade-in">
+                            <span class="contact-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://kimharvee.github.io/Online_Portfolio/" class="contact-link fade-in">
+                            <span class="contact-icon">🌐</span>
+                            <span>Portfolio</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Harvee Agravante. Crafted with passion and code.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active state to nav links
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
